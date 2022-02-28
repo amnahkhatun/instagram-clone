@@ -15,7 +15,7 @@ export default function Posts({ imageUrl, username, caption }) {
       </section>
 
       <img className="post__image" src={imageUrl}></img>
-      <label className="post__text"><strong>Amnah</strong> {caption}</label>
+      <label className="post__text"><strong>{username}</strong> {caption}</label>
     </div>
   )
 }

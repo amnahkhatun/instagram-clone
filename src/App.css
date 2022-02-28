@@ -27,3 +27,8 @@ object-fit: contain;
    display: flex;
    flex-direction: column;
  }
+
+ .app__loginContainer{
+   display: grid;
+  justify-content: flex-end;
+ }

@@ -60,7 +60,7 @@ function App() {
   }, [user, username])
 
   useEffect(() => {
-    db.collection('posts').onSnapshot(snapshot => {
+    db.collection('posts').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
       setPosts(snapshot.docs.map((doc) => (
         doc.data()
       )))
@@ -87,9 +87,9 @@ function App() {
 
   return (
     <div className="App">
-      {true ? <ImageUpload username="amnah" /> :
+      {user  ? <ImageUpload username={user.displayName} /> :
         <h3>You need to login again</h3>}
-{console.log({user})}
+{console.log({posts})}
 
       <Modal
         open={open} onClose={() => setOpen(false)}>
@@ -142,19 +142,20 @@ function App() {
 
       <header className="app__header" >
         <img className="app__headerImage" alt="logo" src={instagram} width="120px"></img>
-        <img className="app__headerAvatar" alt="logo" src={avatar} width="100px"></img>
+        {user ?
+          <Button onClick={() => auth.signOut()}>Log out</Button> :
+
+          (<div className="app__loginContainer">
+            <img className="app__headerAvatar" alt="logo" src={avatar} width="100px"></img>
+            <div>
+              <Button onClick={() => setOpenSignIn(true)}>Sign In</Button>
+              <Button onClick={() => setOpen(true)}>Sign up</Button>
+            </div>
+          </div>)
+        }
       </header>
-      {user ?
-        <Button onClick={() => auth.signOut()}>Log out</Button> :
 
-        (<div className="app__loginContainer">
-          <Button onClick={() => setOpenSignIn(true)}>Sign In</Button>
-          <Button onClick={() => setOpen(true)}>Sign up</Button>
-        </div>)
-
-
-      }
-
+     
       {posts.map(({ imageUrl, username, caption }) => (
         <Posts imageUrl={imageUrl} caption={caption} username={username} />
       ))}
