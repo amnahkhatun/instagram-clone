@@ -87,9 +87,7 @@ function App() {
 
   return (
     <div className="App">
-      {user  ? <ImageUpload username={user.displayName} /> :
-        <h3>You need to login again</h3>}
-{console.log({posts})}
+     
 
       <Modal
         open={open} onClose={() => setOpen(false)}>
@@ -155,7 +153,8 @@ function App() {
         }
       </header>
 
-     
+      {user ? <ImageUpload username={user.displayName} /> :
+        <h3>You need to login again</h3>}
       {posts.map(({ imageUrl, username, caption }) => (
         <Posts imageUrl={imageUrl} caption={caption} username={username} />
       ))}

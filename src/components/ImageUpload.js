@@ -52,11 +52,16 @@ export default function ImageUpload({ username }) {
   return (
     <div className="imageupload">
     <progress value={progress} max="100"/>
-      <input type="text" placeholder="Enter a caption.."
-        onChange={e => setCaption(e.target.value)}
-        value={caption}></input>
-      <input type="file" onChange={handleChange}></input>
-      <Button onClick={handleUpload}>Upload</Button>
+    <div>
+        <input type="text" placeholder="Enter a caption.."
+          onChange={e => setCaption(e.target.value)}
+          value={caption}></input>
+    
+        <label className="upload_file__label" for="upload_file">Browse..</label>
+        <input type="file" id="upload_file" onChange={handleChange}></input>
+      </div>
+        
+      <Button className="uploadButton" onClick={handleUpload}>Upload</Button>
 
     </div>
   )
