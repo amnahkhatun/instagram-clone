@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import { Button } from '@material-ui/core';
 import { storage, db } from '../firebase';
 import firebase from "firebase/compat/app";
-import './ImageUpload.css'
+import './ImageUpload.css';
+import upload from '../images/icons8-upload-24.png';
+import browse from '../images/icons8-browser-windows-48.png'
 
 
 export default function ImageUpload({ username }) {
@@ -51,17 +53,25 @@ export default function ImageUpload({ username }) {
 
   return (
     <div className="imageupload">
-    <progress value={progress} max="100"/>
+    <div>
+        <progress value={progress} max="100" />
+
+    </div>
     <div>
         <input type="text" placeholder="Enter a caption.."
           onChange={e => setCaption(e.target.value)}
           value={caption}></input>
-    
-        <label className="upload_file__label" for="upload_file">Browse..</label>
-        <input type="file" id="upload_file" onChange={handleChange}></input>
-      </div>
+        <label>
+          <img src={browse} alt="upload" for="upload_file" onClick={handleUpload}></img>
+        </label>
+          <img src={upload} alt="upload" onClick={handleUpload}></img>
+          
+          <input type="file" id="upload_file" onChange={handleChange} className="caption"></input>
+         
+         
+        </div>
         
-      <Button className="uploadButton" onClick={handleUpload}>Upload</Button>
+      
 
     </div>
   )

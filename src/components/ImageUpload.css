@@ -1,7 +1,6 @@
 .imageupload{
-  display: flex;
-    justify-content: center;
-    padding: 1%;
+
+    padding: 2%;
 }
 
 .uploadButton{
@@ -20,6 +19,7 @@
     color: white;
     text-align: center;
     margin-top: 3%;
+    background-image: image('../images/Instagram-Logo.png')
 }
 
 #upload_file {
@@ -27,3 +27,11 @@
    position: absolute;
    z-index: -1;
 }
+
+input[type="text" i] {
+width: 10rem;
+    height: 3rem;
+    border-radius: 10px;}
+
+    progress{
+    width: 40rem;    }
